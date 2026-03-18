@@ -3,77 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ken Aldrin | Portfolio</title>
+    <title>Ken Aldrin | Data & Strategy</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Fira+Code&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
+    <!-- Terminal Loader Overlay -->
     <div id="intro-overlay">
-        <div id="typing-text" class="typing-container"></div>
+        <div class="loader-content">
+            <span class="command">system.init()</span>
+            <div id="typing-text" class="terminal-text"></div>
+        </div>
     </div>
 
-    <!-- Mobile Toggle Button -->
-    <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
-        <i class="fas fa-bars"></i>
+    <!-- Background Decoration -->
+    <div class="mesh-gradient"></div>
+
+    <button class="menu-toggle" id="menuBtn">
+        <i data-lucide="menu"></i>
     </button>
 
-    <nav class="sidebar" id="primary-navigation">
-        <div class="nav-header">
-            <h1>Ken Aldrin</h1>
-            <p>Data Professional</p>
+    <!-- Glassmorphic Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="nav-brand">
+            <div class="avatar-circle">KA</div>
+            <h2>Ken Aldrin</h2>
+            <span>Data Analyst</span>
         </div>
-        
-        <ul class="nav-links">
-            <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="#projects"><i class="fas fa-chart-line"></i> Projects</a></li>
-            <li><a href="#certifications"><i class="fas fa-award"></i> Certifications</a></li>
-        </ul>
 
-        <div class="social-icons">
-            <a href="https://github.com/kenaldrn" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/ken-aldrin-7305aa357" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:aldrinken1@gmail.com"><i class="fas fa-envelope"></i></a>
+        <nav class="nav-menu">
+            <a href="#home" class="nav-item active"><i data-lucide="home"></i> Home</a>
+            <a href="#projects" class="nav-item"><i data-lucide="layers"></i> Projects</a>
+            <a href="#certifications" class="nav-item"><i data-lucide="award"></i> Credentials</a>
+        </nav>
+
+        <div class="nav-footer">
+            <div class="social-row">
+                <a href="https://github.com/kenaldrn" target="_blank"><i data-lucide="github"></i></a>
+                <a href="https://www.linkedin.com/in/ken-aldrin-7305aa357" target="_blank"><i data-lucide="linkedin"></i></a>
+                <a href="mailto:aldrinken1@gmail.com"><i data-lucide="mail"></i></a>
+            </div>
         </div>
-    </nav>
+    </aside>
 
-    <main class="content-area">
-        <section id="home" class="section">
-            <div class="hero">
-                <span class="badge">Available for Work</span>
-                <h1>Aspiring Data Analyst & Project Coordinator</h1>
-                <p>Specializing in SQL, Python, and Power BI. Bridging the gap between technical data and project management.</p>
-                <div class="mobile-socials">
-                    <a href="https://github.com/kenaldrn"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/..."><i class="fab fa-linkedin"></i></a>
+    <main class="main-wrapper">
+        <!-- Hero Section -->
+        <section id="home" class="hero reveal">
+            <div class="status-pill">
+                <span class="dot"></span> Open for Opportunities
+            </div>
+            <h1 class="glitch-text">Turning Data into <br><span class="gradient-text">Human Insight.</span></h1>
+            <p class="hero-subtext">
+                Aspiring Data Analyst and Project Coordinator based in Riga. I specialize in <strong>Python, SQL, and Agile</strong> methodologies to streamline complex workflows.
+            </p>
+            <div class="cta-group">
+                <a href="mailto:aldrinken1@gmail.com" class="btn-primary">Get in touch</a>
+                <a href="#projects" class="btn-secondary">View Work</a>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section id="projects" class="section reveal">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2>Selected Work</h2>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-content">
+                        <i data-lucide="database" class="card-icon"></i>
+                        <h3>SQL Optimization</h3>
+                        <p>Advanced MySQL optimization and data structuring for Business Intelligence.</p>
+                        <div class="tags"><span>MySQL</span><span>Analytics</span></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <i data-lucide="bar-chart-3" class="card-icon"></i>
+                        <h3>Visual Intelligence</h3>
+                        <p>Interactive storytelling using Python (Pandas/Matplotlib) and Power BI dashboards.</p>
+                        <div class="tags"><span>Python</span><span>Power BI</span></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="section">
-            <h2>Featured Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <i class="fas fa-database"></i>
-                    <h3>SQL Optimization</h3>
-                    <p>MySQL optimization for business intelligence insights.</p>
-                </div>
-                <div class="project-card">
-                    <i class="fab fa-python"></i>
-                    <h3>Python Visualization</h3>
-                    <p>Data analysis using Pandas and Matplotlib.</p>
-                </div>
+        <!-- Certifications -->
+        <section id="certifications" class="section reveal">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2>Certifications</h2>
             </div>
-        </section>
-
-        <section id="certifications" class="section">
-            <h2>Certifications</h2>
-            <div class="cert-item">
-                <div class="cert-info">
-                    <span class="date">2025</span>
-                    <h3>SQL - MySQL for Data Analytics</h3>
-                    <p>Udemy (365 Careers)</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time-dot"></div>
+                    <div class="time-content">
+                        <h4>SQL - MySQL for Data Analytics</h4>
+                        <p>Udemy (365 Careers) • Professional Certificate</p>
+                    </div>
                 </div>
             </div>
         </section>
