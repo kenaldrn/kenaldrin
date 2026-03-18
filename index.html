@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ken Aldrin | Data Analyst & Project Coordinator</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: #0f172a;
+            --secondary-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --sidebar-width: 260px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* --- INTRO ANIMATION SCREEN --- */
+        #intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .typing-container {
+            font-family: 'Fira Code', monospace;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            border-right: 3px solid var(--accent-color);
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+
+        .slide-up {
+            transform: translateY(-100%);
+        }
+
+        /* --- SIDEBAR --- */
+        nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--secondary-bg);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 1.5rem 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-weight: 500;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-color);
+            transform: translateX(10px);
+        }
+
+        .social-links {
+            margin-top: 3rem;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-dim);
+            font-size: 1.4rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            margin-left: var(--sidebar-width);
+            padding: 4rem;
+            max-width: 1000px;
+        }
+
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-main);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: var(--secondary-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .skill-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card {
+            background: rgba(56, 189, 248, 0.05);
+            padding: 2rem;
+            border-left: 4px solid var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .project-placeholder {
+            border: 2px dashed var(--text-dim);
+            padding: 3rem;
+            text-align: center;
+            border-radius: 12px;
+            color: var(--text-dim);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            main {
+                margin-left: 0;
+                padding: 2rem;
+            }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Intro Animation Overlay -->
+    <div id="intro-overlay">
+        <div class="typing-container" id="typing-text"></div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <nav>
+        <h1>Ken Aldrin</h1>
+        <ul>
+            <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+            <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
+            <li><a href="#certifications"><i class="fas fa-certificate"></i> Certifications</a></li>
+        </ul>
+
+        <div class="social-links">
+            <a href="https://github.com/kenaldrn" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/ken-aldrin-7305aa357" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:aldrinken1@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <h1>Data Analyst & <br><span style="color: var(--accent-color);">Project Coordinator</span></h1>
+            <p>Aspiring professional with hands-on experience in SQL, Python, and Power BI. Dedicated to optimizing data workflows and delivering business intelligence solutions.</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p style="color: var(--text-dim); margin-bottom: 2rem;">
+                Based in Riga, Latvia. I am a Professional Bachelor in Information Systems student at ISMA University. 
+                I specialize in bridging the gap between complex data analysis and project management frameworks like Agile.
+            </p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>Data Analytics</h4>
+                    <p>SQL, Python (Pandas), R, Excel VBA, Power BI</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Web Dev</h4>
+                    <p>HTML5, CSS3, JavaScript</p>
+                </div>
+                <div class="skill-card">
+                    <h4>Management</h4>
+                    <p>Agile, Jira, Confluence, Asana, Slack</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-placeholder">
+                <i class="fas fa-tools fa-3x"></i>
+                <p style="margin-top: 1rem;">Currently syncing my GitHub repositories. <br>Check back soon to see my Data Visualization and Automation work!</p>
+                <a href="https://github.com/kenaldrn" style="color: var(--accent-color); text-decoration: none; display: block; margin-top: 10px;">View GitHub profile →</a>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <div class="cert-card">
+                <h3>SQL - MySQL for Data Analytics and Business Intelligence</h3>
+                <p><strong>Issued by:</strong> Udemy (365 Careers)</p>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 10px;">Skills: SQL querying, MySQL optimization, database management, data analysis.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // --- Typewriter Effect ---
+        const text = "Hello World, I'm Ken";
+        const typingElement = document.getElementById('typing-text');
+        const overlay = document.getElementById('intro-overlay');
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                typingElement.innerHTML += text.charAt(i);
+                // Adjust width dynamically based on text
+                typingElement.style.width = "auto"; 
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                // Wait 1 second after typing finishes, then slide up
+                setTimeout(() => {
+                    overlay.classList.add('slide-up');
+                    // Allow scrolling after animation
+                    document.body.style.overflow = 'auto';
+                }, 1000);
+            }
+        }
+
+        // Initialize animation on load
+        window.onload = () => {
+            document.body.style.overflow = 'hidden'; // Lock scroll during intro
+            typeWriter();
+        };
+
+        // --- Active Link Switching ---
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav ul li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
